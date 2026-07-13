@@ -1,0 +1,51 @@
+# CI/CD: build the container and deploy to Cloud Run.
+#   gcloud builds submit --config cloud/cloudbuild.yaml \
+#       --substitutions=_REGION=us-central1,_SERVICE=biosensor-rag .
+#
+# Demonstrates an MLOps deploy path on a major cloud platform (GCP):
+# source -> Cloud Build -> Artifact Registry image -> Cloud Run service.
+substitutions:
+  _REGION: us-central1
+  _SERVICE: biosensor-rag
+  _REPO: rag
+
+steps:
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -f
+      - cloud/Dockerfile
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - .
+
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - --region=${_REGION}
+      - --platform=managed
+      - --memory=2Gi
+      - --cpu=2
+      - --allow-unauthenticated
+      # Embed backend is fixed by the baked-in index (load_embedder reads it from
+      # the index). Only the generation backend is a live runtime choice; switch
+      # to gemini/openai/claude by setting its key + RAG_GEN_BACKEND here.
+      - --set-env-vars=RAG_GEN_BACKEND=extractive
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+
+options:
+  logging: CLOUD_LOGGING_ONLY

@@ -1,0 +1,14 @@
+[
+  {"question": "How can the body's main stress hormone be tracked non-invasively through perspiration?", "expect_keywords": ["cortisol"], "expect_metadata": {"biomarker": "Cortisol", "biofluid": "Sweat"}},
+  {"question": "Can blood sugar levels be estimated from the fluid in the eyes without a finger prick?", "expect_keywords": ["glucose"], "expect_metadata": {"biomarker": "Glucose", "biofluid": "Tears"}},
+  {"question": "Which skin-worn devices track the marker of muscle fatigue during exercise from perspiration?", "expect_keywords": ["lactate"], "expect_metadata": {"biomarker": "Lactate", "biofluid": "Sweat"}},
+  {"question": "How is the main salt ion lost while perspiring measured by wearable devices?", "expect_keywords": ["sodium"], "expect_metadata": {"biomarker": "Sodium", "biofluid": "Sweat"}},
+  {"question": "What perspiration-based wearables detect the compound associated with gout?", "expect_keywords": ["uric acid"], "expect_metadata": {"biomarker": "Uric acid", "biofluid": "Sweat"}},
+  {"question": "How is the nitrogen waste product cleared by the kidneys monitored non-invasively in perspiration?", "expect_keywords": ["urea"], "expect_metadata": {"biomarker": "Urea", "biofluid": "Sweat"}},
+  {"question": "Can a skin-worn sensor monitor alcohol intake from perspiration?", "expect_keywords": ["ethanol"], "expect_metadata": {"biomarker": "Ethanol", "biofluid": "Sweat"}},
+  {"question": "How is the stress hormone detected in oral fluid by wearable sensors?", "expect_keywords": ["cortisol"], "expect_metadata": {"biomarker": "Cortisol", "biofluid": "Saliva"}},
+  {"question": "What wearables track the main Parkinson's disease medication through perspiration?", "expect_keywords": ["levodopa"], "expect_metadata": {"biomarker": "Levodopa", "biofluid": "Sweat"}},
+  {"question": "How is the electrolyte important for heart rhythm sensed in perspiration?", "expect_keywords": ["potassium"], "expect_metadata": {"biomarker": "Potassium", "biofluid": "Sweat"}},
+  {"question": "Which non-invasive skin sensors estimate sugar levels from perspiration?", "expect_keywords": ["glucose"], "expect_metadata": {"biomarker": "Glucose", "biofluid": "Sweat"}},
+  {"question": "How do wearable devices measure the ion used to diagnose cystic fibrosis in perspiration?", "expect_keywords": ["chloride"], "expect_metadata": {"biomarker": "Chloride", "biofluid": "Sweat"}}
+]

@@ -1,0 +1,14 @@
+# Dependencies for the AWS cloud-native path (cloud/aws_*.py).
+# Install on top of the core requirements:
+#     pip install -r requirements.txt -r requirements-aws.txt
+#
+# The LOCAL pgvector demo (open-source vector DB, $0, no AWS account) needs only
+# numpy + scikit-learn (already in requirements.txt) + these two:
+psycopg2-binary>=2.9      # Postgres driver (local Docker or Amazon RDS/Aurora)
+pgvector>=0.2            # pgvector <-> psycopg2 adapter (vector type registration)
+
+# ---- Amazon Bedrock (Titan embeddings + Claude generation) ----
+boto3>=1.34              # RAG_EMBED_BACKEND=bedrock / RAG_GEN_BACKEND=bedrock
+
+# ---- Amazon OpenSearch Serverless (cloud-native managed k-NN) ----
+opensearch-py>=2.4       # SigV4 auth + k-NN client (cloud/aws_opensearch.py)

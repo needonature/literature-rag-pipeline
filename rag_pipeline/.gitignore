@@ -1,0 +1,18 @@
+# built artifacts
+index/
+*.pkl
+*.npy
+
+# model / hf cache
+.hf/
+*.bin
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# local secrets / reports
+.env
+report.json

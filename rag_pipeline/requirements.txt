@@ -1,0 +1,31 @@
+# ---- Core (zero-cost local path: TF-IDF/LSA embeddings + extractive generation) ----
+# This is all that build_index.py / ask.py / evaluate.py need by default.
+numpy>=1.21
+scikit-learn>=1.0          # TF-IDF/LSA embedder + utilities (the default backend)
+Flask>=2.0                 # internal tool web app (app.py)
+
+# ---- Optional: local neural embeddings (RAG_EMBED_BACKEND=local) ----
+# Lazily imported — NOT needed for the default path above.
+# NOTE: PyTorch publishes no Intel-macOS (x86_64) wheels past 2.2.2, so on an
+# x86_64 / Rosetta Python `torch>=2.0` resolves to nothing. Install these only on
+# an Apple-Silicon-native Python:   pip install -r requirements-neural.txt
+# torch>=2.0
+# transformers>=4.30
+
+# ---- Optional: faster vector search (auto-detected if present) ----
+# faiss-cpu>=1.7
+
+# ---- Optional: token counting for the cost meter ----
+# tiktoken>=0.5
+
+# ---- Optional: cloud LLM / embedding backends (enable per env vars) ----
+# openai>=1.0                       # RAG_GEN_BACKEND=openai / RAG_EMBED_BACKEND=openai
+# anthropic>=0.39                   # RAG_GEN_BACKEND=claude
+# google-generativeai>=0.7          # RAG_GEN_BACKEND=gemini (AI Studio key)
+
+# ---- Optional: GCP cloud-native path (cloud/ helpers) ----
+# google-genai>=1.0                 # Gen AI SDK: Vertex embeddings (gemini-embedding-001) + Gemini gen
+#                                   #   (replaces the deprecated vertexai SDK)
+# google-cloud-aiplatform>=1.60     # only for Vertex AI Vector Search (Matching Engine)
+# google-cloud-bigquery>=3.20       # BigQuery warehouse + VECTOR_SEARCH
+# gunicorn>=21                      # production WSGI server (used in the container)

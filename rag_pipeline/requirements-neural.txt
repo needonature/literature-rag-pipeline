@@ -1,0 +1,11 @@
+# Optional neural-embedding backend (RAG_EMBED_BACKEND=local).
+# Only needed if you want sentence-transformer embeddings instead of the
+# default TF-IDF/LSA. Lazily imported by embeddings.py.
+#
+# REQUIRES an Apple-Silicon-native (arm64) Python on macOS — PyTorch ships no
+# Intel-macOS (x86_64) wheels past 2.2.2. Check with:  python -c "import platform;print(platform.machine())"
+# (should print 'arm64', not 'x86_64').
+#
+# Install:  pip install -r requirements-neural.txt
+torch>=2.0
+transformers>=4.30

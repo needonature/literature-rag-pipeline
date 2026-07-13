@@ -1,0 +1,18 @@
+# Dependencies for the LangChain implementation (langchain_rag.py).
+# Install ON TOP of the core requirements.txt:
+#     pip install -r requirements.txt -r requirements-langchain.txt
+#
+# The DEFAULT path (LCRAG_RETRIEVER=tfidf, LCRAG_LLM=none) needs only these two
+# packages plus scikit-learn (already in requirements.txt) — no API key, no torch.
+langchain>=0.2
+langchain-community>=0.2        # TFIDFRetriever and friends
+# langchain-core and langchain-text-splitters install automatically as deps.
+
+# ---- Optional: real-LLM generation (pick one, set LCRAG_LLM) ----
+# langchain-openai>=0.1         # LCRAG_LLM=openai      (needs OPENAI_API_KEY)
+# langchain-anthropic>=0.2      # LCRAG_LLM=anthropic   (needs ANTHROPIC_API_KEY)
+# langchain-ollama>=0.1         # LCRAG_LLM=ollama      (needs a local Ollama install)
+
+# ---- Optional: open-source vector-DB retriever (LCRAG_RETRIEVER=chroma) ----
+# langchain-openai>=0.1         # embeddings for Chroma (needs OPENAI_API_KEY)
+# langchain-chroma>=0.1         # Chroma open-source embedded vector database

@@ -1,0 +1,41 @@
+# ---- Built artifacts (regenerable; never commit) ----
+rag_pipeline/index/
+rag_pipeline/index_tfidf/
+index/
+index_tfidf/
+*.pkl
+*.npy
+*.faiss
+
+# ---- Data: do NOT redistribute PubMed corpora / large data ----
+*.tsv
+*.parquet
+*.jsonl
+pubmed_*.txt
+pmids_*.txt
+# ignore all CSVs...
+*.csv
+# ...but keep the small synthetic demo sample:
+!sample_data/
+!sample_data/*.csv
+
+# ---- Secrets / local env ----
+.env
+.env.*
+*.key
+credentials*.json
+service-account*.json
+report.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ---- OS / editor ----
+.DS_Store
+.vscode/
+.idea/
